@@ -1,0 +1,41 @@
+body{
+  background:#eee;
+}
+
+#top_bar {
+  padding : 15px 0px;
+
+  #page_header{
+    border-top:1px solid black;
+    border-bottom:1px solid black;
+    text-align:center;
+    position:relative;
+
+    #badge{
+      position:relative;
+      width:160px;
+      left:50%;
+      margin-left:-80px;
+      background:white;
+      border:1px solid #aaa;
+      margin-top:-10px;
+      margin-bottom:-10px;
+      padding:5px;
+      padding-top:10px;
+      line-height:1em;
+      border-radius: 8px; 
+      -moz-border-radius: 8px; 
+      -webkit-border-radius: 8px; 
+      -webkit-box-shadow:  0px 8px 8px 0px rgba(0, 0, 0, 0.2);
+      box-shadow:  0px 8px 8px 0px rgba(0, 0, 0, 0.2);
+    }
+
+    #foo{
+      font-size:2em;
+    }
+
+    #baz{
+      font-size:2em;
+    }
+  }
+}
