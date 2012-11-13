@@ -1,0 +1,12 @@
+(function(){
+
+  // Your simple bookmarklet code goes here.
+  var protocol = 'http://'
+  var host = '<%= Rails.application.config.action_controller.default_url_options[:host] %>';
+  var port = '<%= Rails.application.config.action_controller.default_url_options[:port] %>';
+  port = port === '' ? '' : ':' + port;
+  var full_host = protocol + host + port;
+
+  document.location = full_host + "/pages/new?url=" + encodeURIComponent(document.location)
+
+})();

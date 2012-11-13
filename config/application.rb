@@ -64,5 +64,9 @@ module FooVsBaz
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    config.assets.precompile += %w( easyXDM.js )
+    config.assets.precompile += %w( fvb_simple_bookmarklet.js )
+
   end
 end

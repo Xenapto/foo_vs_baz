@@ -2,7 +2,7 @@ FooVsBaz::Application.routes.draw do
   resources :pages
 
 
-  get "static_pages/home"
+  get "simple" => "static_pages#simple"
 
   root :to => "static_pages#home"
   # The priority is based upon order of creation:

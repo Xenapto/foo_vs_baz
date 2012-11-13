@@ -24,7 +24,7 @@ class PagesController < ApplicationController
   # GET /pages/new
   # GET /pages/new.json
   def new
-    @page = Page.new
+    @page = Page.new(:url => params[:url])
 
     respond_to do |format|
       format.html # new.html.erb
