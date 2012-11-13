@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Url:</b>
+  <%= @page.url %>
+</p>
+
+<p>
+  <b>Foo count:</b>
+  <%= @page.foo_count %>
+</p>
+
+<p>
+  <b>Baz count:</b>
+  <%= @page.baz_count %>
+</p>
+
+
+<%= link_to 'Edit', edit_page_path(@page) %> |
+<%= link_to 'Back', pages_path %>
