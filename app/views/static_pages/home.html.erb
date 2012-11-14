@@ -1,2 +1,17 @@
 <h1>What's this all about?</h1>
 <p>This is a demo app for the <a href="https://github.com/Octo-Labs/easymarklet">easymarlet gem</a>.</p>
+<p>The general idea of the demo is that we are collecting URLs and allowing people to vote them as being 'foo' or 'baz'.</p>
+<p>A variety of bookmarklets are provided to demonstrate various styles of bookmarklets.</p>
+<p>Drag any of the bookmarklets below to your bookmark bar, then visit some other page on the 'net, then click the bookmarklet.</p>
+<p><b>Please Note : </b> many of these bookmarklets will not work on pages that are served via SSL.</p>
+<p>This is just a restriction since this site is not SSL enabled.  It is not a fundamental limitaion of bookmarklets.</p>
+
+<h2>Manual Entry</h2>
+<p>To start we just have a regular Rails scaffold for a page model that will store a URL, foo_count, and baz_count.</p>
+<p><%= link_to "Visit the new page form to check it out.", new_page_path %></p>
+
+<h2>Simple Bookmarklet</h2>
+<p>The simple bookmarklet will take the URL in the browser at the time it is clicked and submit it to the new page form to allow you to choose 'foo' or 'baz'.</p>
+<%= link_to 'FvB Simple', easymarklet_js('fvb_simple_bookmarklet.js'), :class=> "btn" %>
+<%= link_to 'More info about simple bookmarklets.', '/simple' %>
+
