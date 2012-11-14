@@ -1,8 +1,11 @@
 FooVsBaz::Application.routes.draw do
+  match 'fvb_xdm_producer' => 'fvb_xdm_producer#index'
+
   resources :pages
 
-
   get "simple" => "static_pages#simple"
+  get "xdm" => "static_pages#xdm"
+  get "iframe" => "static_pages#iframe"
 
   root :to => "static_pages#home"
   # The priority is based upon order of creation:

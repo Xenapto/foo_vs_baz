@@ -4,4 +4,10 @@ class StaticPagesController < ApplicationController
 
   def simple
   end
+
+  def xdm
+  end
+
+  def iframe
+  end
 end
