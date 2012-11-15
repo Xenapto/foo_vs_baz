@@ -1,12 +1,37 @@
+//= require easymarklet/simple
+
 (function(){
+  
+  var FvbSimpleBookmarklet = {
+    css : ['/assets/fvb_simple_bookmarklet.css'], // could be an array or a single string
+    init : function(full_host){
+      full_host = full_host == undefined ? '' : full_host
+      var div = document.createElement('div')
+      div.id = 'fvb_simple_insert'
 
-  // Your simple bookmarklet code goes here.
-  var protocol = 'http://'
-  var host = '<%= Rails.application.config.action_controller.default_url_options[:host] %>';
-  var port = '<%= Rails.application.config.action_controller.default_url_options[:port] %>';
-  port = port === '' ? '' : ':' + port;
-  var full_host = protocol + host + port;
+      var go = document.createElement('a')
+      go.appendChild(document.createTextNode('Vote on the Foo V Baz status of this page.'))
+      go.onclick = function(){
+        var dest = full_host + "/pages/new?url=" + encodeURIComponent(document.location)
+        document.location = dest;
+      }
 
-  document.location = full_host + "/pages/new?url=" + encodeURIComponent(document.location)
+      var no = document.createElement('a')
+      no.appendChild(document.createTextNode('Nevermind.'))
+      no.onclick = function(){
+        document.body.removeChild(div);
+      }
+
+      div.appendChild(go)
+      div.appendChild(no)
+      document.body.appendChild(div);
+    }
+  }
+  
+  window.FvbSimpleBookmarklet = FvbSimpleBookmarklet;
 
 })();
+
+var fvb_simple_simple = new Easymarklet.Simple(FvbSimpleBookmarklet);
+fvb_simple_simple.init();
+

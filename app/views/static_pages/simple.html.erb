@@ -11,44 +11,107 @@
 </pre>
 
 <p>
-You'll get a simple shell of a bookmarklet.
+You'll get a simple shell of a bookmarklet and a css file.
 </p>
 <p>
 <code>app/assets/javascripts/fvb_simple_bookmarklet.js</code>
 </p>
 <pre>
-<code>(function(){
-  // Your simple bookmarklet code goes here.
-})();</code>
+<code>//= require easymarklet/simple
+
+(function(){
+  
+  var FvbSimpleBookmarklet = {
+    css : ['/assets/fvb_simple_bookmarklet.css'], // could be an array or a single string
+    init : function(full_host){
+      var div = document.createElement('div')
+      div.id = 'fvb_simple_insert'
+      div.appendChild(document.createTextNode('FvbSimple Insert'))
+      div.onclick = function(){
+        document.body.removeChild(div);
+      }
+      document.body.appendChild(div);
+    }
+  }
+  
+  window.FvbSimpleBookmarklet = FvbSimpleBookmarklet;
+
+})();
+
+var fvb_simple_simple = new Easymarklet.Simple(FvbSimpleBookmarklet);
+fvb_simple_simple.init();</code>
+</pre>
+
+<p>
+  The EasyMarklet.Simple class will automatically include any stylesheets included in the css array.
+</p>
+
+<p>
+<code>app/assets/stylesheets/fvb_simple_bookmarklet.css</code>
+</p>
+
+<pre>
+  <code>#fvb_simple_insert{
+  position:absolute;
+  top:10px;
+  left:10px;
+  background:black;
+  border:3px double white;
+  color:white;
+  padding:10px;
+  -webkit-box-shadow: 7px 7px 5px rgba(50, 50, 50, 0.75);
+  -moz-box-shadow:    7px 7px 5px rgba(50, 50, 50, 0.75);
+  box-shadow:         7px 7px 5px rgba(50, 50, 50, 0.75);
+}</code>
 </pre>
 
 <h2>Update the code</h2>
 <p>
-Then we just add a little bit of code to grab the current URL and send it back to our app.
+Then we just alter the code to give the user the option to submit the url to our app or not. 
 </p>
 
 <p>
-<b>Note</b> : This code is designed to allow you to test your bookmarklets in various different environments.  
-You could potentially simplify it by just hardcoding your destination URL.
-</p>
-<p>
-To make the environment friendly magic work, we need to include the erb processor on the js.
+<b>Note</b> : Easymarklet sets a full_host variable that you can use to point back to your app.
 </p>
 
-<p>
-<code>mv app/assets/javascripts/fvb_simple_bookmarklet.js app/assets/javascripts/fvb_simple_bookmarklet.js.erb</code>
-</p>
 
 <pre>
-<code>(function(){
-  // Your simple bookmarklet code goes here.
-  var protocol = 'http://'
-  var host = '&lt;%= Rails.application.config.action_controller.default_url_options[:host] %&gt;';
-  var port = '&lt;%= Rails.application.config.action_controller.default_url_options[:port] %&gt;';
-  port = port === '' ? '' : ':' + port;
-  var full_host = protocol + host + port;
-  document.location = full_host + "/pages/new?url=" + encodeURIComponent(document.location)
-})();</code>
+<code>//= require easymarklet/simple
+
+(function(){
+  
+  var FvbSimpleBookmarklet = {
+    css : ['/assets/fvb_simple_bookmarklet.css'], // could be an array or a single string
+    init : function(full_host){
+      full_host = full_host == undefined ? '' : full_host
+      var div = document.createElement('div')
+      div.id = 'fvb_simple_insert'
+
+      var go = document.createElement('a')
+      go.appendChild(document.createTextNode('Vote on the Foo V Baz status of this page.'))
+      go.onclick = function(){
+        var dest = full_host + "/pages/new?url=" + encodeURIComponent(document.location)
+        document.location = dest;
+      }
+
+      var no = document.createElement('a')
+      no.appendChild(document.createTextNode('Nevermind.'))
+      no.onclick = function(){
+        document.body.removeChild(div);
+      }
+
+      div.appendChild(go)
+      div.appendChild(no)
+      document.body.appendChild(div);
+    }
+  }
+  
+  window.FvbSimpleBookmarklet = FvbSimpleBookmarklet;
+
+})();
+
+var fvb_simple_simple = new Easymarklet.Simple(FvbSimpleBookmarklet);
+fvb_simple_simple.init();</code>
 </pre>
 
 <h2>Link to the bookmarklet</h2>
