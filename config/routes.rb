@@ -3,6 +3,7 @@ FooVsBaz::Application.routes.draw do
 
   resources :pages
 
+  get "bare" => "static_pages#bare"
   get "simple" => "static_pages#simple"
   get "xdm" => "static_pages#xdm"
   get "iframe" => "static_pages#iframe"

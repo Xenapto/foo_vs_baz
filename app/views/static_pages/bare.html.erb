@@ -1,0 +1,59 @@
+<h1>Bare Bookmarklet Example</h1>
+
+<p>Drag the link below into your bookmark bar.</p>
+
+<%= link_to 'FvB Bare', easymarklet_js('fvb_bare_bookmarklet.js'), :class=> "btn" %>
+
+<h2>Generating this bookmarklet</h2>
+
+<pre>
+  <code>rails g easymarklet:bare fvb_bare</code>
+</pre>
+
+<p>
+You'll get a bare shell of a bookmarklet.
+</p>
+<p>
+<code>app/assets/javascripts/fvb_bare_bookmarklet.js</code>
+</p>
+<pre>
+<code>(function(){
+  // Your bare bookmarklet code goes here.
+})();</code>
+</pre>
+
+<h2>Update the code</h2>
+<p>
+Then we just add a little bit of code to grab the current URL and send it back to our app.
+</p>
+
+<p>
+<b>Note</b> : This code is designed to allow you to test your bookmarklets in various different environments.  
+You could potentially simplify it by just hardcoding your destination URL.
+</p>
+<p>
+To make the environment friendly magic work, we need to include the erb processor on the js.
+</p>
+
+<p>
+<code>mv app/assets/javascripts/fvb_bare_bookmarklet.js app/assets/javascripts/fvb_bare_bookmarklet.js.erb</code>
+</p>
+
+<pre>
+<code>(function(){
+  // Your bare bookmarklet code goes here.
+  var protocol = 'http://'
+  var host = '&lt;%= Rails.application.config.action_controller.default_url_options[:host] %&gt;';
+  var port = '&lt;%= Rails.application.config.action_controller.default_url_options[:port] %&gt;';
+  port = port === '' ? '' : ':' + port;
+  var full_host = protocol + host + port;
+  document.location = full_host + "/pages/new?url=" + encodeURIComponent(document.location)
+})();</code>
+</pre>
+
+<h2>Link to the bookmarklet</h2>
+<p>The <code>easymarklet_js</code> helper function makes it easy to link to your bookmarklet in a template.</p>
+<pre>
+  <code>&lt;%= link_to 'FvB Bare', easymarklet_js('fvb_bare_bookmarklet.js') %&gt;</code>
+</pre>
+

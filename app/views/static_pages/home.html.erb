@@ -10,6 +10,12 @@
 <p>To start we just have a regular Rails scaffold for a page model that will store a URL, foo_count, and baz_count.</p>
 <p><%= link_to "Visit the new page form to check it out.", new_page_path %></p>
 
+<h2>Bare Bookmarklet</h2>
+<p>The bare bookmarklet is just the minimalist way to go.  If you just need to redirect to your app this is a good way to go.</p>
+<%= link_to 'Fvb Bare', easymarklet_js('fvb_bare_bookmarklet.js'), :class => "btn" %>
+<%= link_to 'More info about bare bookmarklets.', '/bare' %>
+
+
 <h2>Simple Bookmarklet</h2>
 <p>The simple bookmarklet will take the URL in the browser at the time it is clicked and submit it to the new page form to allow you to choose 'foo' or 'baz'.</p>
 <%= link_to 'FvB Simple', easymarklet_js('fvb_simple_bookmarklet.js'), :class=> "btn" %>
@@ -22,3 +28,5 @@
 
 <h2>Iframe Bookmarklet</h2>
 <p>The iframe bookmarklet will insert an iframe into the page as a pop-over.</p>
+
+
