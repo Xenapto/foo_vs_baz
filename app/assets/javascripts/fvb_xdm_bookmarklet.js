@@ -22,9 +22,8 @@
         foo.appendChild(document.createTextNode('Vote foo!'))
         foo.onclick = function(){
           remote.post('Foo',document.location.href,
-                      function(){
-                        alert('Your vote has been cast!');
-                        document.body.removeChild(document.getElementById('fvb_simple_insert'));
+                      function(data){
+                        handleResults(data)
                       });
         }
 
@@ -32,9 +31,8 @@
         baz.appendChild(document.createTextNode('Vote baz!'))
         baz.onclick = function(){
           remote.post('Baz',document.location.href,
-                      function(){
-                        alert('Your vote has been cast!');
-                        document.body.removeChild(document.getElementById('fvb_simple_insert'));
+                      function(data){
+                        handleResults(data)
                       });
         }
 
@@ -50,6 +48,24 @@
         content.appendChild(baz)
         content.appendChild(no)
         document.body.appendChild(FooVsBaz.wrap(content,'fvb_simple_insert'));
+
+        function handleResults(data){
+          console.log(data);
+          var response = document.createElement('div')
+          response.appendChild(document.createTextNode('Congratulations!  Your vote has been counted.'))
+
+          var no = document.createElement('a')
+          no.appendChild(document.createTextNode('Close'))
+          no.onclick = function(){
+            document.body.removeChild(document.getElementById('fvb_simple_insert'));
+          }
+          response.appendChild(no)
+
+          content.innerHTML = "";
+          content.appendChild(response);
+          //alert('Your vote has been cast!');
+          //document.body.removeChild(document.getElementById('fvb_simple_insert'));
+        }
       },
 
       methods : { // The methods that the producer can call
@@ -62,7 +78,7 @@
         post : function(vote,url,callback){
           $.post( '/pages',
                   { page : { url : url, vote : vote } },
-                  callback
+                  callback, 'json'
           )
         }
       }
