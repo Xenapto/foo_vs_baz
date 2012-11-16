@@ -54,8 +54,17 @@
           var response = document.createElement('div')
           response.appendChild(document.createTextNode('Congratulations!  Your vote has been counted.'))
 
+          var foo = document.createElement('div')
+          foo.appendChild(document.createTextNode('Foo : ' + data.foo_count ))
+          response.appendChild(foo)
+
+          var baz = document.createElement('div')
+          baz.appendChild(document.createTextNode('Baz : ' + data.baz_count ))
+          response.appendChild(baz)
+
+
           var no = document.createElement('a')
-          no.appendChild(document.createTextNode('Close'))
+          no.appendChild(document.createTextNode('Thank you, come again!'))
           no.onclick = function(){
             document.body.removeChild(document.getElementById('fvb_simple_insert'));
           }
