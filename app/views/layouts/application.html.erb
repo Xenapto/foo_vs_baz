@@ -7,18 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div id="top_bar">
-  <div id="page_header">
-    <div id="badge">
-      <a href="/">
-      <span id="foo">Foo</span>
-      <span id="vs">vs.</span>
-      <span id="baz">Baz</span>
-      </a>
-    </div>
-  </div>
-</div>
-
+<%= render 'layouts/fvb_logo_bar' %>
 <div id="main_content" class="well">
   <%= yield %>
 </div>

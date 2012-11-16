@@ -1,14 +1,35 @@
+/*
+ *= require application/logo_bar
+ */
+
 #fvb_simple_insert{
   position:fixed;
   top:10px;
   left:10px;
   background:black;
   border:3px double white;
-  color:white;
-  padding:10px;
+  color:black;
+  padding:5px;
   -webkit-box-shadow: 7px 7px 5px rgba(50, 50, 50, 0.75);
   -moz-box-shadow:    7px 7px 5px rgba(50, 50, 50, 0.75);
   box-shadow:         7px 7px 5px rgba(50, 50, 50, 0.75);
+  border-radius: 8px;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  z-index:10000;
+
+}
+
+#fvb_simple_frame{
+  background:#eee;
+  padding: 0px;
+  border-radius: 8px;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+}
+
+#fvb_simple_content{
+  padding:5px;
 }
 
 #fvb_simple_insert a{

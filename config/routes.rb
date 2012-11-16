@@ -7,7 +7,7 @@ FooVsBaz::Application.routes.draw do
   get "simple" => "static_pages#simple"
   get "xdm" => "static_pages#xdm"
   get "iframe" => "static_pages#iframe"
-
+  get "js/:file" => "js#index"
   root :to => "static_pages#home"
   # The priority is based upon order of creation:
   # first created -> highest priority.

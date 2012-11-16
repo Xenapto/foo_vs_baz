@@ -9,6 +9,18 @@
       var div = document.createElement('div')
       div.id = 'fvb_simple_insert'
 
+      var frame = document.createElement('div')
+      frame.id = 'fvb_simple_frame'
+      div.appendChild(frame)
+
+     
+      var logo_text = '<div id="logo_bar"><div id="logo_frame"><div id="badge"><span id="foo">Foo</span><span id="vs">vs.</span><span id="baz">Baz</span></div></div></div>';
+      frame.innerHTML = logo_text;
+
+      var content = document.createElement('div')
+      content.id = 'fvb_simple_content'
+      frame.appendChild(content)
+
       var go = document.createElement('a')
       go.appendChild(document.createTextNode('Vote on the Foo V Baz status of this page.'))
       go.onclick = function(){
@@ -22,8 +34,8 @@
         document.body.removeChild(div);
       }
 
-      div.appendChild(go)
-      div.appendChild(no)
+      content.appendChild(go)
+      content.appendChild(no)
       document.body.appendChild(div);
     }
   }
