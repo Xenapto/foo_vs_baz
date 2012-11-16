@@ -38,7 +38,7 @@
 
 
         var no = document.createElement('a')
-        no.appendChild(document.createTextNode('Nevermind.'))
+        no.appendChild(document.createTextNode('Nevermind, voting is for suckers.'))
         no.onclick = function(){
           document.body.removeChild(document.getElementById('fvb_simple_insert'));
         }
