@@ -66,6 +66,7 @@ module FooVsBaz
     config.assets.version = '1.0'
 
     config.assets.precompile += %w( easyXDM.js )
+    config.assets.precompile += %w( fvb_bare_bookmarklet.js )
     config.assets.precompile += %w( fvb_simple_bookmarklet.js )
     config.assets.precompile += %w( fvb_simple_bookmarklet.css )
     config.assets.precompile += %w( fvb_xdm_consumer.js )
