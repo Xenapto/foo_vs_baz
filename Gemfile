@@ -22,7 +22,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
-gem 'easymarklet'
+gem 'easymarklet'#, :path => "../easymarklet"
 
 
 group :test, :development do
