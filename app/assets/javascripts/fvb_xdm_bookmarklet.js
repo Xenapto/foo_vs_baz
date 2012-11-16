@@ -7,11 +7,12 @@
       css : ['/assets/fvb_simple_bookmarklet.css'], // could be an array or a string
       init : function(full_host,remote){
         full_host = full_host == undefined ? '' : full_host
-        var div = document.createElement('div')
-        div.id = 'fvb_simple_insert'
-
+        
+        var content = document.createElement('div')
+        content.id = 'fvb_simple_content'
+        
         var vote = document.createElement('p')
-        vote.appendChild(document.createTextNode('Vote now!'))
+        vote.appendChild(document.createTextNode('Vote on the Foo V Baz status of this page.'))
         /*vote.onclick = function(){
           var dest = full_host + "/pages/new?url=" + encodeURIComponent(document.location)
           document.location = dest;
@@ -23,7 +24,7 @@
           remote.post('Foo',document.location.href,
                       function(){
                         alert('Your vote has been cast!');
-                        document.body.removeChild(div);
+                        document.body.removeChild(document.getElementById('fvb_simple_insert'));
                       });
         }
 
@@ -33,7 +34,7 @@
           remote.post('Baz',document.location.href,
                       function(){
                         alert('Your vote has been cast!');
-                        document.body.removeChild(div);
+                        document.body.removeChild(document.getElementById('fvb_simple_insert'));
                       });
         }
 
@@ -41,14 +42,14 @@
         var no = document.createElement('a')
         no.appendChild(document.createTextNode('Nevermind.'))
         no.onclick = function(){
-          document.body.removeChild(div);
+          document.body.removeChild(document.getElementById('fvb_simple_insert'));
         }
 
-        div.appendChild(vote)
-        div.appendChild(foo)
-        div.appendChild(baz)
-        div.appendChild(no)
-        document.body.appendChild(div);
+        content.appendChild(vote)
+        content.appendChild(foo)
+        content.appendChild(baz)
+        content.appendChild(no)
+        document.body.appendChild(FooVsBaz.wrap(content,'fvb_simple_insert'));
       },
 
       methods : { // The methods that the producer can call
