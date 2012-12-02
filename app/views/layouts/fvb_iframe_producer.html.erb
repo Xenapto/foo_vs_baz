@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Fvb Iframe Producer</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= render 'layouts/fvb_logo_bar' %>
+<div id="main_content" class="well">
+  <%= yield %>
+</div>
+
+
+<%= javascript_include_tag "fvb_iframe_producer" %>
+<script type="text/javascript" charset="utf-8">
+  var easymarklet_consumer_url = "<%= params['xdm_e'] %>";
+</script>
+</body>
+</html>

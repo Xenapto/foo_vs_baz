@@ -4,29 +4,10 @@
 
 <%= link_to 'Fvb Xdm', easymarklet_js('fvb_xdm_consumer.js'), :class=> "btn" %>
 
-<h2>Initial Setup</h2>
-<p>
-XDM bookmarklets allow you to insert an iframe from your app into the 'host' page which can communicate seamlessly with the bookmarklet code running in the 'host' page.
-</p>
-<p>
-To enable cross domain communictaion between your site and other pages on the 'net we need to be able to generate a fully qualified URL to your bookmarklet code. To set the correct host you should add this to each of your confing/environment/*.rb files. Adjust the :host accordingly. :port is optional.
-</p>
-<pre>
-  <code>config.action_controller.default_url_options = {:host => 'localhost', :port => 3000}</code>
-</pre>
 
-<h2>XDM Basics</h2>
-<p>
-To enable cross-domain communication Easymarklet uses easyXDM to insert an iframe into the remote page which points back to your app.
-The code running in the context of the remote page is called the consumer.
-The code running on the page that has been iframed in is called the producer.
-</p>
+<%= render 'initial_setup' %>
 
-<p>
-  Function calls can be passed from the consumer to the producer, and the then the producer can interact with your app
-  and then push a message back to the consumer.  You could also use polling or websockets to allow your app to 'push'
-  data to the remote page.
-</p>
+<%= render 'xdm_basics' %>
 
 <h2>Generating this bookmarklet</h2>
 
@@ -55,39 +36,26 @@ You can link to your new bookmarklet with this :
 </code>
 </pre>
 
-<h2>File Overview</h2>
+<%= render 'file_overview' %>
 
-<dl>
-<dt>*_bookmarklet.js</dt>
-<dd>
-This is where your code goes. 
-It's the central interface between your consumer (the code that runs on other pages), and your producer (the pages on your app).
-You don't link directly to this.
-</dd>
+<h2>Update the code</h2>
+<p>
+  The only JS file that you'll need to modify is 
+  <code>app/assets/javascripts/fvb_xdm_bookmarklet.js</code>
+</p>  
+<pre>
+<code><%= File.open("#{Rails.root}/app/assets/javascripts/fvb_xdm_bookmarklet.js").read %></code>
+</pre>
 
-<dt>*_consumer.js</dt>
-<dd>
-A manifest that includes a consumer helper from Easymarklet and your bookmarklet code. 
-You link to this with the <code>easymarklet_js</code> helper. 
-It will be loaded into the page after someone clicks your bookmarklet.
-</dd>
+<p>
+  You'll also need to add some css to style the UI elements that 
+  the bookmarklet adds to the page.
+</p>
+<p>
+<code>app/assets/stylesheets/fvb_xdm_bookmarklet.css</code>
+</p>
 
-<dt>*_producer.js</dt>
-<dd>
-A manifest that includes a producer helper from Easymarklet and your bookmarklet code. 
-This is included on page on your app that provides the service.
-</dd>
+<pre>
+<code><%= File.open("#{Rails.root}/app/assets/stylesheets/fvb_simple_bookmarklet.css").read %></code>
+</pre>
 
-<dt>*_producer_controller.rb</dt>
-<dd>
-An empty controller to handle serveing the producer page.  
-Customize this if you need to make data available to the producer at load time.
-</dd>
-
-<dt>index.html.erb</dt>
-<dd>A basic template for the producer page.</dd>
-
-<dt>layouts/*_producer.html.erb</dt>
-<dd>A simple layout that includes the *_producer.js manifest.</dd>
-
-</dl>

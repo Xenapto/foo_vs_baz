@@ -1,0 +1,15 @@
+<div id="vote">
+  <p>Cast your vote now!</p>
+  <%= link_to "Vote Foo", "", :class => 'btn', :id => 'vote_foo' %>
+  <%= link_to "Vote Baz", "", :class => 'btn', :id => 'vote_baz' %>
+  <%= link_to "Nevermind", "", :class => 'fvb_close' %>
+</div>
+<div id="results" style="display:none;">
+  <p>Congratulations! Your vote has been counted.</p>
+  <ul>
+    <li>Foo : <span id="foo_count"></span></li>
+    <li>Baz : <span id="baz_count"></span></li>
+  </ul>
+  <%= link_to "Thank you, come again!", "", :class=>"fvb_close" %>
+</div>
+

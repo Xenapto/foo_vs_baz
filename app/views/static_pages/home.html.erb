@@ -6,14 +6,21 @@
 <p><b>Please Note : </b> many of these bookmarklets will not work on pages that are served via SSL.</p>
 <p>This is just a restriction since this site is not SSL enabled.  It is not a fundamental limitaion of bookmarklets.</p>
 
+<hr/>
+
 <h2>Manual Entry</h2>
 <p>To start we just have a regular Rails scaffold for a page model that will store a URL, foo_count, and baz_count.</p>
 <p><%= link_to "Visit the new page form to check it out.", new_page_path %></p>
+
+<hr/>
+
 
 <h2>Bare Bookmarklet</h2>
 <p>The bare bookmarklet is the minimalist way to go.  If you just need to redirect to your app this is a good way to go.</p>
 <%= link_to 'Fvb Bare', easymarklet_js('fvb_bare_bookmarklet.js'), :class => "btn" %>
 <%= link_to 'More info about bare bookmarklets.', '/bare' %>
+
+<hr/>
 
 
 <h2>Simple Bookmarklet</h2>
@@ -21,12 +28,21 @@
 <%= link_to 'FvB Simple', easymarklet_js('fvb_simple_bookmarklet.js'), :class=> "btn" %>
 <%= link_to 'More info about simple bookmarklets.', '/simple' %>
 
+<hr/>
+
 <h2>XDM Bookmarklet</h2>
 <p>The XDM bookmarklet will inject some UI elements into the page and transmit the results back to the app without leaving the page.</p>
 <%= link_to 'Fvb Xdm', easymarklet_js('fvb_xdm_consumer.js'), :class=> "btn" %>
 <%= link_to 'More info about xdm bookmarklets.', '/xdm' %>
 
+<hr/>
+
 <h2>Iframe Bookmarklet</h2>
 <p>The iframe bookmarklet will insert an iframe into the page as a pop-over.</p>
+<%= link_to 'Fvb Iframe', easymarklet_js('fvb_iframe_consumer.js'), :class => "btn" %>
+<%= link_to 'More info about iframe bookmarklets.', '/iframe' %>
 
+<hr/>
 
+<h2>DLux Bookmarklet</h2>
+<p>The dlux bookmarklet will insert nested auto resizing iframes for the ulitmate flexibility in bookmarklet interaction.</p>

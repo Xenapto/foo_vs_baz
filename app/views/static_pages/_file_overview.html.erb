@@ -1,0 +1,36 @@
+<h2>File Overview</h2>
+
+<dl>
+<dt>*_bookmarklet.js</dt>
+<dd>
+This is where your code goes. 
+It's the central interface between your consumer (the code that runs on other pages), and your producer (the pages on your app).
+You don't link directly to this.
+</dd>
+
+<dt>*_consumer.js</dt>
+<dd>
+A manifest that includes a consumer helper from Easymarklet and your bookmarklet code. 
+You link to this with the <code>easymarklet_js</code> helper. 
+It will be loaded into the page after someone clicks your bookmarklet.
+</dd>
+
+<dt>*_producer.js</dt>
+<dd>
+A manifest that includes a producer helper from Easymarklet and your bookmarklet code. 
+This is included on page on your app that provides the service.
+</dd>
+
+<dt>*_producer_controller.rb</dt>
+<dd>
+An empty controller to handle serveing the producer page.  
+Customize this if you need to make data available to the producer at load time.
+</dd>
+
+<dt>index.html.erb</dt>
+<dd>A basic template for the producer page.</dd>
+
+<dt>layouts/*_producer.html.erb</dt>
+<dd>A simple layout that includes the *_producer.js manifest.</dd>
+
+</dl>

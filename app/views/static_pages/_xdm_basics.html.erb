@@ -1,0 +1,13 @@
+<h2>XDM Basics</h2>
+<p>
+To enable cross-domain communication Easymarklet uses easyXDM to insert an iframe into the remote page which points back to your app.
+The code running in the context of the remote page is called the consumer.
+The code running on the page that has been iframed in is called the producer.
+</p>
+
+<p>
+  Function calls can be passed from the consumer to the producer, and the then the producer can interact with your app
+  and then push a message back to the consumer.  You could also use polling or websockets to allow your app to 'push'
+  data to the remote page.
+</p>
+

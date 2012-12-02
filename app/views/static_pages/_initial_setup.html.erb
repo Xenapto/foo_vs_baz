@@ -1,0 +1,12 @@
+<h2>Initial Setup</h2>
+
+<p>
+XDM and IFrame bookmarklets allow you to insert an iframe from your app into the 'host' page which can communicate seamlessly with the bookmarklet code running in the 'host' page.
+</p>
+<p>
+To enable cross domain communictaion between your site and other pages on the 'net we need to be able to generate a fully qualified URL to your bookmarklet code. To set the correct host you should add this to each of your confing/environment/*.rb files. Adjust the :host accordingly. :port is optional.
+</p>
+<pre>
+  <code>config.action_controller.default_url_options = {:host => 'localhost', :port => 3000}</code>
+</pre>
+

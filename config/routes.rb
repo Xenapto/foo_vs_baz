@@ -1,4 +1,6 @@
 FooVsBaz::Application.routes.draw do
+  match 'fvb_iframe_producer' => 'fvb_iframe_producer#index'
+
   match 'fvb_xdm_producer' => 'fvb_xdm_producer#index'
 
   resources :pages

@@ -1,0 +1,76 @@
+<h1>IFrame Bookmarklet Example</h1>
+
+<p>Drag the link below into your bookmark bar.</p>
+
+<%= link_to 'Fvb Iframe', easymarklet_js('fvb_iframe_consumer.js'), :class => 'btn' %>
+
+<%= render 'initial_setup' %>
+
+<%= render 'xdm_basics' %>
+
+<h2>Generating this bookmarklet</h2>
+
+<pre>
+  <code>rails g easymarklet:iframe fvb_iframe</code>
+</pre>
+
+<p>
+You'll get a bunch of files.
+</p>
+
+<pre>
+<code>
+$ rails g easymarklet:iframe fvb_iframe
+      create  app/assets/javascripts/fvb_iframe_bookmarklet.js
+      create  app/assets/javascripts/fvb_iframe_consumer.js
+      create  app/assets/javascripts/fvb_iframe_producer.js
+      create  app/controllers/fvb_iframe_producer_controller.rb
+      create  app/views/fvb_iframe_producer/index.html.erb
+      create  app/views/layouts/fvb_iframe_producer.html.erb
+       route  match 'fvb_iframe_producer' => 'fvb_iframe_producer#index'
+
+You can link to your new bookmarklet with this :
+
+&lt;%= link_to 'Fvb Iframe', easymarklet_js('fvb_iframe_consumer.js') %&gt;
+</code>
+</pre>
+
+<%= render 'file_overview' %>
+
+<h3>Update the code</h3>
+
+<p>
+  In the <code>fvb_iframe_bookmarklet.js</code> file we just need to add
+  a link to a stylesheet to use for styling the iframe, and alter the init
+  function to set up our AJAX interaction with the server.
+</p>
+
+<%= embed_file('app/assets/javascripts/fvb_iframe_bookmarklet.js') %>
+
+<hr/>
+
+<p>
+  Now we add just a touch of CSS that will control the appearance of our 
+  floating iframe.  Since the UI for the bookmarklet will run inside the iframe
+  (on our site, instead of directly in another page) we don't have to include CSS
+  for any of our actual UI elements.
+</p>
+
+<%= embed_file('app/assets/stylesheets/fvb_iframe_bookmarklet.css') %>
+
+<hr/>
+<p>
+  Next we update the <code>index.html.erb</code> template to include our voting options.
+</p>
+
+<%= embed_file('app/views/fvb_iframe_producer/index.html.erb') %>
+
+<hr/>
+
+<p>
+  We also tweak the laoyout to include our logo bar.
+</p>
+
+<%= embed_file('app/views/layouts/fvb_iframe_producer.html.erb') %>
+
+
