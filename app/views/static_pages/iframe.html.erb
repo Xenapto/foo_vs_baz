@@ -73,4 +73,17 @@ You can link to your new bookmarklet with this :
 
 <%= embed_file('app/views/layouts/fvb_iframe_producer.html.erb') %>
 
+<h3>Going to production</h3>
+
+<p>
+  Before deploying you need to make sure that a few things are available as individual
+  files through the asset pipeline.  Add this to the bottom of the <code>config</code>
+  block in <code>config/application.rb</code>.
+</p>
+
+<pre>
+<code>config.assets.precompile += %w( fvb_iframe_consumer.js )
+config.assets.precompile += %w( fvb_iframe_producer.js )
+config.assets.precompile += %w( fvb_iframe_bookmarklet.css )</code>
+</pre>
 

@@ -71,7 +71,9 @@ module FooVsBaz
     config.assets.precompile += %w( fvb_simple_bookmarklet.css )
     config.assets.precompile += %w( fvb_xdm_consumer.js )
     config.assets.precompile += %w( fvb_xdm_producer.js )
-
+    config.assets.precompile += %w( fvb_iframe_consumer.js )
+    config.assets.precompile += %w( fvb_iframe_producer.js )
+    config.assets.precompile += %w( fvb_iframe_bookmarklet.css )
 
 
   end
