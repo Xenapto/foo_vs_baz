@@ -1,0 +1,44 @@
+<h1>Dlux Bookmarklet Example</h1>
+
+<p>Drag the link below into your bookmark bar.</p>
+
+<%= link_to 'Fvb Dlux', easymarklet_js('fvb_dlux_consumer.js'), :class => 'btn' %>
+
+<%= render 'initial_setup' %>
+
+<%= render 'xdm_basics' %>
+
+<h2>Generating this bookmarklet</h2>
+
+<pre>
+  <code>rails g easymarklet:iframe fvb_dlux</code>
+</pre>
+
+<p>
+  You'll get a bunch of files.
+</p>
+
+<pre>
+<code>
+$ rails g easymarklet:dlux fvb_dlux
+      create  app/assets/javascripts/fvb_dlux_bookmarklet.js
+      create  app/assets/javascripts/fvb_dlux_consumer.js
+      create  app/assets/javascripts/fvb_dlux_producer.js
+      create  app/controllers/fvb_dlux_producer_controller.rb
+      create  app/views/fvb_dlux_producer/index.html.erb
+      create  app/views/layouts/fvb_dlux_producer.html.erb
+      create  app/views/layouts/fvb_dlux_producer_buffer.html.erb
+       route  match 'fvb_dlux_producer' =&gt; 'fvb_dlux_producer#index'
+       route  match 'fvb_dlux_producer/buffer' =&gt; 'fvb_dlux_producer#buffer'
+
+You can link to your new bookmarklet with this :
+
+&lt;%= link_to 'Fvb Dlux', easymarklet_js('fvb_dlux_consumer.js') %&gt;
+</code>
+</pre>
+
+<h3>Update the code</h3>
+
+<p>
+Coming soon.  For now : Use the source, Luke.
+</p>

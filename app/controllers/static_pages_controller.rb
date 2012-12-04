@@ -13,4 +13,7 @@ class StaticPagesController < ApplicationController
 
   def iframe
   end
+
+  def dlux
+  end
 end
