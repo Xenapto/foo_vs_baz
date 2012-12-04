@@ -12,5 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require easymarklet/dlux
 //= require_tree ./application
 

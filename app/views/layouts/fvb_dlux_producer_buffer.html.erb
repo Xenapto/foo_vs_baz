@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Fvb Dlux Producer</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<iframe id="producer_frame" src="<%= params[:producer] %>?url=<%= params[:xdm_e] %>" frameborder="0"></iframe>
+
+<%= link_to_function "Close", "fvb_dlux_producer.closeFrame()" %>
+<%= javascript_include_tag "fvb_dlux_producer" %>
+</body>
+</html>
