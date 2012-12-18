@@ -15,10 +15,10 @@
     <%= f.label :url %><br />
     <%= f.text_field :url %>
   </div>
-  <div class="field">
-    Your Vote :<br/>
-    <label><%= f.radio_button "vote", "Foo" %>Foo</label>
-    <label><%= f.radio_button "vote", "Baz" %>Baz</label>
+  <div class="field clearfix" id="your_vote">
+    <span>Your Vote :</span>
+    <label><%= f.radio_button "vote", "Foo" %><span>Foo</span></label>
+    <label><%= f.radio_button "vote", "Baz" %><span>Baz</span></label>
   </div>
   <div class="actions">
     <%= f.submit "Cast my vote!" %>

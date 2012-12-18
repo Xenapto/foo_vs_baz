@@ -11,8 +11,10 @@
 <div id="main_content" class="well">
   <%= yield %>
 </div>
-<script type="text/javascript" charset="utf-8">
 
+<script type="text/javascript">
+  var FooVsBaz = FooVsBaz || {};
+  FooVsBaz.params = <%= params.to_json.html_safe -%>;
 </script>
 
 </body>

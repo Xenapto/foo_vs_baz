@@ -2,6 +2,8 @@ class Page < ActiveRecord::Base
   attr_accessible :url 
   attr_accessor :vote
 
+  validates :url, :presence => true
+
   def initialize(params = {}, options={})
     super
     self.foo_count = 0

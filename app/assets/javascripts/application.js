@@ -14,4 +14,13 @@
 //= require jquery_ujs
 //= require easymarklet/dlux
 //= require_tree ./application
+//= require_self
+//
+var FooVsBaz = FooVsBaz || {};
+
+
+$(document).ready(function(){
+  var fn = [FooVsBaz.params.controller, FooVsBaz.params.action].join("_").replace("/","_");
+  if (FooVsBaz.hasOwnProperty(fn)) FooVsBaz[fn].init();
+});
 
