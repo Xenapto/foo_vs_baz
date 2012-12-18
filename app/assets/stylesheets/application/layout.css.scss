@@ -5,3 +5,38 @@ body{
 #main_content{
   margin: 0px 10px;
 }
+
+footer{
+
+  margin-top:1.5em;
+  border-top:1px solid #aaa;
+
+  zoom: 1;
+
+
+  transition: opacity 1s;
+  -moz-transition: opacity 1s;
+  -webkit-transition: opacity 1s;
+  -o-transition: opacity 1s;
+
+	filter: alpha(opacity=30);
+	opacity: 0.3;
+
+  &:hover{
+    filter: alpha(opacity=90);
+	  opacity: 0.90;
+  }
+
+  .text{
+    padding-top:0.4em;
+    padding-left:75px;
+    p{
+      margin-bottom:0.15em;
+    }
+  }
+
+  .octologo{
+    float:left;
+  }
+  
+}

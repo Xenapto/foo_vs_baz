@@ -36,3 +36,51 @@
   }
 
 }
+
+#graph_results{
+  border:1px solid #aaa;
+  border-radius: 8px; 
+  -moz-border-radius: 8px; 
+  -webkit-border-radius: 8px;
+  padding:0px;
+
+  width:200px;
+
+  .text{
+    border-bottom:1px solid #aaa;
+    width:90px;
+    padding:5px;
+    float:left;
+    text-align:center;
+    font-size:1.2em;
+
+    span{
+      display:block;
+    }
+
+    &.foo{
+      border-right:1px solid #aaa;
+      width:89px;
+      background:#555;
+      color:#aaa;
+      -webkit-border-top-left-radius: 8px;
+      -moz-border-radius-topleft: 8px;
+      border-top-left-radius: 8px;
+    }
+
+    &.baz{
+      background:#aaa;
+      color:#555;
+      -webkit-border-top-right-radius: 8px;
+      -moz-border-radius-topright: 8px;
+      border-top-right-radius: 8px;
+    }
+  }
+
+  .graph{
+    padding:10px;
+    margin:10px;
+    padding-top:20px;
+    clear:both;
+  }
+}

@@ -1,20 +1,27 @@
-<p id="notice"><%= notice %></p>
-
+<% if notice %>
+  <div class="alert"><%= notice %></div>
+<% end %>
 <p>
   <b>Url:</b>
   <%= @page.url %>
 </p>
 
-<p>
-  <b>Foo count:</b>
-  <%= @page.foo_count %>
-</p>
 
-<p>
-  <b>Baz count:</b>
-  <%= @page.baz_count %>
-</p>
+<div id="graph_results" class="clearfix">
+  <div class="text foo">
+    <span>Foo</span><span id="foo_count"><%= @page.foo_count %></span>
+  </div>
+  <div class="text baz">
+    <span>Baz</span><span id="baz_count"><%= @page.baz_count %></span>
+  </div>
+  <div class="graph">
+    
+  </div>
+</div>
 
 
-<%= link_to 'Edit', edit_page_path(@page) %> |
-<%= link_to 'Back', pages_path %>
+
+<%#= link_to 'Edit', edit_page_path(@page) %> 
+<br/>
+<%= link_to 'Vote Again!', new_page_path, :class=>'btn' %>
+<%= link_to 'Back to the home page', root_path, :class=>'btn' %>

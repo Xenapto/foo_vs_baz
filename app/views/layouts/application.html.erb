@@ -11,6 +11,21 @@
 <div id="main_content" class="well">
   <%= yield %>
 </div>
+<footer class="footer">
+  <div class="container">
+    <%= link_to image_tag('octolabs.png'), 'http://www.octolabs.com/', :class=>'octologo' %>
+    <div class='text'>
+    <p>Foo Vs Baz is a demo app for the <%= link_to 'Easymarklet ruby gem','https://rubygems.org/gems/easymarklet' %>.</p>
+    <p>You can find souce code for <%= link_to 'Foo Vs Baz', 'https://github.com/Octo-Labs/foo_vs_baz' %> and 
+    <%= link_to 'Easymarklet','https://github.com/Octo-Labs/easymarklet' %> on 
+    <%= link_to 'Github','http://github.com/' %></p>
+    <p>
+      FVB and Easymarklet are productions of 
+      <%= link_to 'OctoLabs', 'http://www.octolabs.com/' %>
+    </p>
+    </div>
+  </div>
+</footer>
 
 <script type="text/javascript">
   var FooVsBaz = FooVsBaz || {};
