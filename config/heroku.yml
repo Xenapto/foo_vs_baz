@@ -13,14 +13,17 @@
 production:
   app: foo-vs-baz
   stack: cedar
+  addons: &default_addons
+    - heroku-postgresql:dev
   #tag: production/*
   #config:
   #  BUNDLE_WITHOUT: "development:test"
   #  GOOGLE_ANALYTICS: "UA-12345678-1"
 
-#staging:
-  #stack: cedar
-  #app: awesomeapp-staging
+staging:
+  stack: cedar
+  app: foo-vs-baz-staging
+  addons: *default_addons
   #config: &default
     #BUNDLE_WITHOUT: "development:test"
   #addons:
