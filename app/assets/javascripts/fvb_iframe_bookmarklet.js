@@ -5,6 +5,7 @@
     visible : true,
     consumer : {
       css : ['/assets/fvb_iframe_bookmarklet.css'], // could be an array or a string
+      protocol : 'https',
       methods : { // The methods that the producer can call
       }
     },
