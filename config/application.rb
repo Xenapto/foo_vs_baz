@@ -77,6 +77,6 @@ module FooVsBaz
     config.assets.precompile += %w( fvb_dlux_consumer.js )
     config.assets.precompile += %w( fvb_dlux_producer.js )
 
-
+    config.use_ssl = false ## ssl off by default
   end
 end

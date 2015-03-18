@@ -36,4 +36,6 @@ FooVsBaz::Application.configure do
   config.assets.debug = true
 
   config.action_controller.default_url_options = {:host => 'localhost', :port => 3000}
+  config.use_ssl = true
+  config.ssl_port = 3000
 end
