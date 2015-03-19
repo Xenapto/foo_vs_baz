@@ -23,7 +23,7 @@
           return false;
         });
         $('.fvb_close').click(function(){
-          consumer.closeFrame();
+          console.log('got back ' + consumer.closeFrame());
           return false;
         });
         // Send the vote to the server via AJAX and pass the rusults off to the handleResults function
