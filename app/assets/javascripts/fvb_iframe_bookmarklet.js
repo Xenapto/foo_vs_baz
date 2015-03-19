@@ -10,15 +10,17 @@
         console.log('initializing consumer fucntions');
     
       },
-      methods : { consumerMethod: {
-                    method : function(){
-                    alert('closing!');
-                    console.log('consumer method')
-                    return 'hello'; 
-                }
-              },
+      methods : { 
+        consumerMethod: {
+          method : function(callback){
+            alert('closing!');
+            console.log('consumer method')
+            callback({data: 'hello from callback'})
+            return { data:  'hello' };
+          }
+        },
 
-    }
+      }
     },
     producer : {
       path : "/fvb_iframe_producer", // The path on your app that provides your data service
@@ -35,9 +37,12 @@
         });
         $('.fvb_close').click(function(){
           console.log('got back ' + consumer.closeFrame());
-          console.log('got back from consumerMethod' + consumer.consumerMethod())
+          consumer.consumerMethod(showConsumer)
           return false;
         });
+        function showConsumer(hash){
+          console.log(hash['data'])
+        }
         // Send the vote to the server via AJAX and pass the rusults off to the handleResults function
         function doPost(vote){
           url = consumer_url;
