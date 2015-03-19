@@ -6,8 +6,10 @@
     consumer : {
       css : ['/assets/fvb_iframe_bookmarklet.css'], // could be an array or a string
       protocol : 'https',
-      methods : { // The methods that the producer can call
-      }
+      init : function(){
+        function consumerMethod(){ console.log('yay consumer'); return 'hello from consumer function'}
+      },
+      methods : { consumerMethod : 'hello from consumer'      }
     },
     producer : {
       path : "/fvb_iframe_producer", // The path on your app that provides your data service
@@ -24,6 +26,7 @@
         });
         $('.fvb_close').click(function(){
           console.log('got back ' + consumer.closeFrame());
+          consumer.consumerMethod();
           return false;
         });
         // Send the vote to the server via AJAX and pass the rusults off to the handleResults function
@@ -41,8 +44,8 @@
         }
 
       },
-      methods : { // The methods that the consumer can call
-        // We only need one way communication for this one.
+      methods : { 
+        producerMethod : 'hello from producer'
       }
     }
   }
