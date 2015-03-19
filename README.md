@@ -1,17 +1,58 @@
-# Foo vs. Baz
+# Webscraping bookmarklet demo
 
-An epic struggle as old as the universe itself.
+This is a spike to demonstrate feasability of scraping data off https site with a bookmarklet.
 
-[Visit the site and cast your votes.](http://foo-vs-baz.herokuapp.com/)
+### Setup
 
-This project is a demo of the various bookmarklets that can be created
-with the [Easymarklet](https://github.com/Octo-Labs/easymarklet) gem.
+##### SSL
 
-* [Bare Bookmarklets](http://foo-vs-baz.herokuapp.com/bare)
-* [Simple Bookmarklets](http://foo-vs-baz.herokuapp.com/simple)
-* [XDM Bookmarklets](http://foo-vs-baz.herokuapp.com/xdm)
-* [Iframe Bookmarklets](http://foo-vs-baz.herokuapp.com/iframe)
-* [DLux Bookmarklets](http://foo-vs-baz.herokuapp.com/dlux)
+* [for more detail see](http://makandracards.com/makandra/15903-using-thin-for-development-with-ssl)
+
+* create self signed ssl cert in ~/.ssl directory
+```openssl req -new -newkey rsa:2048 -sha1 -days 365 -nodes -x509 -keyout server.key -out server.crt```
+* add localhosts to hosts file
+```echo "127.0.0.1 localhost.ssl" | sudo tee -a /etc/hosts```
+
+######
+* you may need to clone the modified easymaklet gem off xenapto server
+
+### Running
+```bundle install```
+```thin start -p 3001 --ssl --ssl-key-file ~/.ssl/server.key --ssl-cert-file ~/.ssl/server.crt```
+* then navigate to https://localhost:3000
+* manually load artoo scraper from (https://medialab.github.io/artoo/)
+* drag 'Iframe Bookmarklet' to menu bar
+* click 'Iframe Bookmarklet'
+
+Demo works on the close button and vote foo button
+
+## Lessons learned
+* To scrape a page with https, you need ssl set up on bookmarklet server
+* Iframe is easier to display than the shadow dom
+* Communication between frames happens via XDM. The setup of this happens in Easymarklet producer.js and consumer.js files. Configuration is a bit complex
+* passing data by callbacks easier to configure than return functions
+* setup of shared functions is via the bookmarklets.js file. Example code is
+```
+var FvbIframeBookmarklet = {
+
+    visible : true,
+    protocol : 'https',
+    consumer : {
+      css : ['/assets/fvb_iframe_bookmarklet.css'], // could be an array or a string
+      init : function(producer_url,producer) {
+        console.log('initializing consumer fucntions');
+    
+      },
+      methods : { 
+        scrapeSomething: {
+        method : function(callback){
+          var data = artoo.scrape('h1','text');
+          callback({ scrapeResult: data })
+        }
+      }
+    }
+```
+
 
 
 
