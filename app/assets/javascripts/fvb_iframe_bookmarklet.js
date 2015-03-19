@@ -3,13 +3,22 @@
   var FvbIframeBookmarklet = {
 
     visible : true,
+    protocol : 'https',
     consumer : {
       css : ['/assets/fvb_iframe_bookmarklet.css'], // could be an array or a string
-      protocol : 'https',
-      init : function(){
-        function consumerMethod(){ console.log('yay consumer'); return 'hello from consumer function'}
+      init : function(producer_url,producer) {
+        console.log('initializing consumer fucntions');
+    
       },
-      methods : { consumerMethod : 'hello from consumer'      }
+      methods : { consumerMethod: {
+                    method : function(){
+                    alert('closing!');
+                    console.log('consumer method')
+                    return 'hello'; 
+                }
+              },
+
+    }
     },
     producer : {
       path : "/fvb_iframe_producer", // The path on your app that provides your data service
@@ -26,7 +35,7 @@
         });
         $('.fvb_close').click(function(){
           console.log('got back ' + consumer.closeFrame());
-          consumer.consumerMethod();
+          console.log('got back from consumerMethod' + consumer.consumerMethod())
           return false;
         });
         // Send the vote to the server via AJAX and pass the rusults off to the handleResults function
