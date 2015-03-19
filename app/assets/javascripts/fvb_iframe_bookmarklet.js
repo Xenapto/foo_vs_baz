@@ -19,7 +19,12 @@
             return { data:  'hello' };
           }
         },
-
+        scrapeSomething: {
+          method : function(callback){
+            var data = artoo.scrape('h1','text');
+            callback({ scrapeResult: data })
+          }
+        }
       }
     },
     producer : {
@@ -27,9 +32,13 @@
       init : function(consumer_url,consumer){
         // Set up some click handlers
         $('#vote_foo').click(function(){
-          doPost('Foo')
+          consumer.scrapeSomething(showScrape)
           return false;
         });
+        
+        function showScrape(hash){
+          $('#vote_foo').html(hash.scrapeResult)
+        }
 
         $('#vote_baz').click(function(){
           doPost('Baz')
