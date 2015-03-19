@@ -29,6 +29,7 @@
         // Send the vote to the server via AJAX and pass the rusults off to the handleResults function
         function doPost(vote){
           url = consumer_url;
+          url = 'default'
           $.post( '/pages', { page : { url : url, vote : vote } }, handleResults, 'json')
         }
         // A handler to display the current voting results
