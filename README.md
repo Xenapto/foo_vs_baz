@@ -1,6 +1,7 @@
 # Webscraping bookmarklet demo
 
 This is a spike to demonstrate feasability of scraping data off https site with a bookmarklet.
+We can scrape name, skills and experience titles from Linked In
 
 ### Setup
 
@@ -14,7 +15,6 @@ This is a spike to demonstrate feasability of scraping data off https site with 
 ```echo "127.0.0.1 localhost.ssl" | sudo tee -a /etc/hosts```
 
 ######
-* you may need to clone the modified easymaklet gem off xenapto server
 
 ### Running
 ```bundle install```
@@ -22,9 +22,17 @@ This is a spike to demonstrate feasability of scraping data off https site with 
 * then navigate to https://localhost:3000
 * manually load artoo scraper from (https://medialab.github.io/artoo/)
 * drag 'Iframe Bookmarklet' to menu bar
+* Navigate to a Linked In contact page
 * click 'Iframe Bookmarklet'
+* click 'Scrape Contact'
 
-Demo works on the close button and vote foo button
+###### notes
+scraping has a dependency on loading 'artoo' - check this is working if any 
+errors
+
+## To do
+* doesn't save any data but ajax api call already demonstrated in gem
+* no error handling in callback!
 
 ## Lessons learned
 * To scrape a page with https, you need ssl set up on bookmarklet server
