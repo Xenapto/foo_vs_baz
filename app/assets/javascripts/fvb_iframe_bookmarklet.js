@@ -11,20 +11,6 @@
     
       },
       methods : { 
-        consumerMethod: {
-          method : function(callback){
-            alert('closing!');
-            console.log('consumer method')
-            callback({data: 'hello from callback'})
-            return { data:  'hello' };
-          }
-        },
-        scrapeSomething: {
-          method : function(callback){
-            var data = artoo.scrape('h1','text');
-            callback({ scrapeResult: data })
-          }
-        },
         scrapeLiContact: {
           method : function (callback) {
             console.log('scraping contact')
@@ -47,15 +33,17 @@
           consumer.scrapeLiContact(handleLiResults);
           return false;
         });
-        
-        $('.fvb_close').click(function(){
-          console.log('got back ' + consumer.closeFrame());
-          consumer.consumerMethod(showConsumer)
+        $('#save_contact').click(function(){
+          alert ('pretend success')
+          consumer.closeFrame();
           return false;
         });
-        function showConsumer(hash){
-          console.log(hash['data'])
-        }
+        
+        $('.fvb_close').click(function(){
+          consumer.closeFrame();
+          return false;
+        });
+
         function handleLiResults(data){
           console.log('writing ' + data.name);
           $("#scraped_name").html(data.name);
