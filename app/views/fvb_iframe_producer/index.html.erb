@@ -1,15 +1,13 @@
 <div id="vote">
   <p>Cast your vote now!</p>
-  <%= link_to "Vote Foo", "", :class => 'btn', :id => 'vote_foo' %>
-  <%= link_to "Vote Baz", "", :class => 'btn', :id => 'vote_baz' %>
+  <%= link_to "Scrape Contact", "", :class => 'btn', :id => 'scrape_contact' %>
   <%= link_to "Nevermind", "", :class => 'fvb_close' %>
 </div>
 <div id="results" style="display:none;">
-  <p>Congratulations! Your vote has been counted.</p>
-  <ul>
-    <li>Foo : <span id="foo_count"></span></li>
-    <li>Baz : <span id="baz_count"></span></li>
-  </ul>
+  <p>Here is some data we found for the contact</p>
+  <div id="scraped_name">name</div>
+  <ul id="scraped skills"></ul>
+  <ul id="scraped experience"><ul>
   <%= link_to "Thank you, come again!", "", :class=>"fvb_close" %>
 </div>
 

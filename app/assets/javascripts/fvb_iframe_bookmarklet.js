@@ -27,11 +27,13 @@
         },
         scrapeLiContact: {
           method : function (callback) {
+            console.log('scraping contact')
             var skills = artoo.scrape('.skills-section li', 'data-endorsed-item-name');
             var filteredSkills = skills.filter(function(element) { return element != undefined } ); 
             var experience = artoo.scrape( '.background-section h4', 'text' );
             var name = artoo.scrape( '.full-name','text' );
             var data = { name: name, skills: filteredSkills, experience: experience }
+            console.log('found data for ' + data.name)
             callback(data);
           }
         }
@@ -41,19 +43,11 @@
       path : "/fvb_iframe_producer", // The path on your app that provides your data service
       init : function(consumer_url,consumer){
         // Set up some click handlers
-        $('#vote_foo').click(function(){
-          consumer.scrapeLiContact(showLiName)
+        $('#scrape_contact').click(function(){
+          consumer.scrapeLiContact(handleLiResults);
           return false;
         });
         
-        function showLiName(data){
-          $('#vote_foo').html(data.name)
-        }
-
-        $('#vote_baz').click(function(){
-          doPost('Baz')
-          return false;
-        });
         $('.fvb_close').click(function(){
           console.log('got back ' + consumer.closeFrame());
           consumer.consumerMethod(showConsumer)
@@ -62,20 +56,12 @@
         function showConsumer(hash){
           console.log(hash['data'])
         }
-        // Send the vote to the server via AJAX and pass the rusults off to the handleResults function
-        function doPost(vote){
-          url = consumer_url;
-          url = 'default'
-          $.post( '/pages', { page : { url : url, vote : vote } }, handleResults, 'json')
-        }
-        // A handler to display the current voting results
-        function handleResults(data){
-          $("#foo_count").html(data.foo_count);
-          $("#baz_count").html(data.baz_count);
+        function handleLiResults(data){
+          console.log('writing ' + data.name);
+          $("#scraped_name").html(data.name);
           $('#vote').hide();
           $('#results').show();
         }
-
       },
       methods : { 
         producerMethod : 'hello from producer'
