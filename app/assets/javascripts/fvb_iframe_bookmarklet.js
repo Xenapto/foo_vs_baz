@@ -24,6 +24,16 @@
             var data = artoo.scrape('h1','text');
             callback({ scrapeResult: data })
           }
+        },
+        scrapeLiContact: {
+          method : function (callback) {
+            var skills = artoo.scrape('.skills-section li', 'data-endorsed-item-name');
+            var filteredSkills = skills.filter(function(element) { return element != undefined } ); 
+            var experience = artoo.scrape( '.background-section h4', 'text' );
+            var name = artoo.scrape( '.full-name','text' );
+            var data = { name: name, skills: filteredSkills, experience: experience }
+            callback(data);
+          }
         }
       }
     },
@@ -32,12 +42,12 @@
       init : function(consumer_url,consumer){
         // Set up some click handlers
         $('#vote_foo').click(function(){
-          consumer.scrapeSomething(showScrape)
+          consumer.scrapeLiContact(showLiName)
           return false;
         });
         
-        function showScrape(hash){
-          $('#vote_foo').html(hash.scrapeResult)
+        function showLiName(data){
+          $('#vote_foo').html(data.name)
         }
 
         $('#vote_baz').click(function(){
