@@ -59,9 +59,17 @@
         function handleLiResults(data){
           console.log('writing ' + data.name);
           $("#scraped_name").html(data.name);
+          _populateList('#scraped_skills', data.skills.slice(0,7))
+          _populateList('#scraped_experience', data.experience.slice(0,7))
           $('#vote').hide();
           $('#results').show();
         }
+        function _populateList (list, array) {
+          $.each(array, function(i){
+            $(list).append  ('<li>' + array[i] + '</li>');
+          });
+        }
+
       },
       methods : { 
         producerMethod : 'hello from producer'
