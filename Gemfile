@@ -22,8 +22,8 @@ group :assets do
 end
 
 gem 'jquery-rails'
-#gem 'easymarklet', '~> 0.0.8'
-gem 'easymarklet', :path => "../easymarklet"
+gem 'easymarklet', '~> 0.0.8'
+# gem 'easymarklet', :path => "../easymarklet"
 
 
 
