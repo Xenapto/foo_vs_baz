@@ -18,9 +18,9 @@ We can scrape name, skills and experience titles from Linked In
 
 ### Running
 ```bundle install```
-```thin start -p 3001 --ssl --ssl-key-file ~/.ssl/server.key --ssl-cert-file ~/.ssl/server.crt```
+```thin start -p 3000 --ssl --ssl-key-file ~/server.key --ssl-cert-file ~/server.crt```
 * then navigate to https://localhost:3000
-* manually load artoo scraper from (https://medialab.github.io/artoo/)
+* you may need to manually accept the certificate to load the page 
 * drag 'Iframe Bookmarklet' to menu bar
 * Navigate to a Linked In contact page
 * click 'Iframe Bookmarklet'
